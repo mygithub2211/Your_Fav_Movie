@@ -1,5 +1,9 @@
+/**
+ * THIS PAGE IS FOR THE TRAILER BUTTON
+ * PLAYS TRAILER
+ */
+// import PropTypes from "prop-types"
 import { createContext, useState } from "react"
-import PropTypes from "prop-types"
 import Modal from 'react-modal'
 import YouTube from 'react-youtube'
 
@@ -14,9 +18,9 @@ const opts = {
 
 const MovieContext = createContext()
 
-const MovieProvider = ({children}) => {
-    const [modalIsOpen, setModalIsOpen] = useState(false)
-    const [trailerKey, setTrailerKey] = useState('')
+const MovieProvider = ({ children }) => {
+    const [ modalIsOpen, setModalIsOpen ] = useState(false)
+    const [ trailerKey, setTrailerKey ] = useState('')
 
     const handleTrailer = async (id, type = 'movie')  => {
         setTrailerKey('')
@@ -72,7 +76,8 @@ const MovieProvider = ({children}) => {
         </MovieContext.Provider>
     )
 }
-MovieProvider.propTypes = {
+/*MovieProvider.propTypes = {
     children: PropTypes.node,
-}
+}*/
+
 export {MovieProvider, MovieContext}

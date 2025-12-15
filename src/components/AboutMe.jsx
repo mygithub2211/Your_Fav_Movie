@@ -10,12 +10,12 @@ function AboutMe() {
             {/* About Me */}
             <div className="flex flex-col space-y-3 ml-2">
                 <h1 className="text-[30px] text-white">About Me</h1>
-                <p className="flex items-center space-x-4 text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde enim, perspiciatis repellendus provident vitae ipsum, quae distinctio impedit obcaecati facere qui quod sint adipisci eius. Consectetur sit perferendis quasi quidem.
+                <p className="text-gray-400 text-[15px]">
+                    Hello, I'm Phat Tran, a recent Computer Science graduate from George Mason University with experience in HTML, CSS, JavaScript, TypeScript, React.js, Next.js, MongoDB, Java, Python, Agile/Scrum methodologies, and more, along with the foundation in Data Structures and Algorithms. I developed Cinébox, a responsive Movie and TV Shows Recommendation web app that uses real-time data from The Movie Database (TMDB) API to deliver an engaging browsing experience.
                 </p>
             </div>
             {/* Contact Me */}
-            <div className="flex flex-col space-y-3 ml-2">
+            <div className="flex flex-col space-y-4 ml-2">
                 <h1 className="text-[30px] text-white">Contact Me</h1>
                 <div className="flex text-gray-400">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6 mr-1">
