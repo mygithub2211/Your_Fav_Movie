@@ -160,7 +160,7 @@ const MovieSearch = ({ title, data }) => {
                         <p className="font-semibold text-[14px] text-yellow-400 ">({item.vote_average})</p>
                       </div>
                       {/* movie overview */}
-                      <p className="text-[14px] line-clamp-4">{item.overview}</p>
+                      <p className="text-[14px] line-clamp-5">{item.overview}</p>
                     </div>
                   </div>
                 </div>
