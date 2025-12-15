@@ -135,7 +135,7 @@ const MovieSearch = ({ title, data }) => {
                         <p className="font-semibold text-[14px] text-red-600">{item.release_date || item.first_air_date}</p>
                       </div>
                       {/* Stars + Rating (do not force wrapping)*/}
-                      <div className="flex items-center gap-[4px] w-full max-[1380px]:flex-wrap">
+                      <div className="flex items-center gap-[4px] w-full max-[1390px]:flex-wrap">
                         {/* stars — stay grouped */}
                         <div className="flex items-center gap-[1px]">
                           {(() => {
