@@ -233,7 +233,7 @@ function Detail({ type }) {
                         {/* trailer button */}
                         <button
                             onClick={() => handleTrailer(movie.id, isMovie ? "movie" : "tv")}
-                            className=" inline-flex items-center gap-2 px-6 py-3 mt-2 bg-white text-black rounded-md font-semibold hover:bg-gray-200 transition"
+                            className=" inline-flex items-center gap-2 px-3 py-2 mt-2 bg-white text-black rounded-md font-semibold hover:bg-gray-200 transition"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="size-8 bi bi-play-fill" viewBox="0 0 16 16"> 
                                 <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/> 
