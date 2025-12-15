@@ -1,6 +1,6 @@
 @author Phat Tran
 
-Link: https://yourfavmovie.vercel.app/
+Link: https://your-fav-movie.vercel.app/
 
 Description:
 1. Cinébox is a modern movie and TV discovery app that lets users explore trending, top-rated, and genre-based content through a clean, responsive interface
