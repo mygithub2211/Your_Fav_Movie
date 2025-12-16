@@ -1,13 +1,15 @@
 /**
  * THIS PAGE IS USED TO SHOW MOVIES OR TV SHOWS 
  * BY CLICKING ON "Movies" AND "TV Shows" ON THE HEADER
+ * PAGINATION LOCIC LIVES HERE
+ * LAYOUT + RESPONSIVE COLUMNS LIVE IN MovieSearch.jsx
  */
 import { useEffect, useState } from "react"
 import MovieSearch from "./MovieSearch"
 
 function MovieAndTV({ title, type }) {
-  const [items, setItems] = useState([])
-  const [page, setPage] = useState(1)
+  const [ items, setItems ] = useState([])
+  const [ page, setPage ] = useState(1)
   const TOTAL_PAGES = 200
 
   useEffect(() => {
@@ -68,6 +70,7 @@ function MovieAndTV({ title, type }) {
     if (page > 4) {
       nums.push(<span key="dots-start">…</span>)
     }
+    
     const start = Math.max(2, page - 2)
     const end = Math.min(TOTAL_PAGES - 1, page + 2)
     for (let i = start; i <= end; i++) {
@@ -82,7 +85,7 @@ function MovieAndTV({ title, type }) {
 
   return (
     <div className="text-white">
-      {/* call MovieSearch.jsx for layouts */}
+      {/* call MovieSearch.jsx for layout */}
       {items.length > 0 && <MovieSearch title={title} data={items} />}
       {/* prev and next buttons */}
       <div className="flex flex-col items-center gap-4 mt-6">

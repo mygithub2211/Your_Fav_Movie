@@ -89,7 +89,7 @@ const MovieTVList = ({ title, data }) => {
               <div key={item.id} className="aspect-[2/3] relative group w-full">
                 <div className="group-hover:scale-105 transition-transform duration-500 ease-in-out w-full h-full cursor-pointer">
                   {/* shadow 50% of the picture */}
-                  <div className="absolute bottom-0 left-0 w-full h-[50%] bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-full h-[50%] bg-gradient-to-t from-black/80 to-transparent pointer-events-none rounded-xl" />
                   <img
                     src={`${import.meta.env.VITE_IMG_URL}${item.poster_path}`}
                     alt={item.title || item.original_title || item.name || item.original_name}
@@ -97,8 +97,8 @@ const MovieTVList = ({ title, data }) => {
                   />
                   <div className="absolute bottom-2 left-0 w-full px-3">
                     {/*<p className="uppercase text-md ">{item.title || item.original_title}</p>*/}
-                    {/* Released Date + Rating */}
-                    <div className="flex items-center justify-between w-full">
+                    {/* Released Date + Rating (Wrapping)*/}
+                    <div className="flex items-center w-full justify-between">
                       {/* released date */}
                       <div className="flex items-center gap-[2px]">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-5 text-red-600 flex-shrink-0">
@@ -134,7 +134,7 @@ const MovieTVList = ({ title, data }) => {
                         </svg>
                         <p className="font-semibold text-[14px] text-red-600">{item.release_date || item.first_air_date}</p>
                       </div>
-                      {/* Stars + Rating (do not force wrapping)*/}
+                      {/* Stars + Rating (Wrapping) */}
                       <div className="flex items-center gap-[4px] w-full max-[1390px]:flex-wrap">
                         {/* stars — stay grouped */}
                         <div className="flex items-center gap-[1px]">
@@ -156,7 +156,7 @@ const MovieTVList = ({ title, data }) => {
                             )
                           })()}
                         </div>
-                         {/* vote average - rating */}
+                          {/* vote average - rating */}
                         <p className="font-semibold text-[14px] text-yellow-400 ">({item.vote_average})</p>
                       </div>
                       {/* movie overview */}

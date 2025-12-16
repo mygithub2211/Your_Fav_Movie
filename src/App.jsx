@@ -1,49 +1,26 @@
-import { useState, useEffect } from 'react'
-import Header from './components/Header'
-import AboutMe from './components/AboutMe'
-import MovieTVList from './components/MovieTVList'
-import MovieNowPlaying from './components/MovieNowPlaying'
-import { MovieProvider } from './context/MovieProvider'
+import { useState, useEffect } from "react"
+import Header from "./components/Header"
+import AboutMe from "./components/AboutMe"
+import MovieTVList from "./components/MovieTVList"
+import MovieNowPlaying from "./components/MovieNowPlaying"
+import { MovieProvider } from "./context/MovieProvider"
 import { Routes, Route } from "react-router-dom"
 import Detail from "./components/Detail"
-import SearchPage from './components/SearchPage'
+import SearchPage from "./components/SearchPage"
 import MovieAndTV from "./components/MovieAndTV"
-import GenrePage from './components/GenrePage'
+import GenrePage from "./components/GenrePage"
 
 
 function App() {
-  const [movieSearch, setMovieSearch] = useState([])
-  const [movieNowPlaying, setMovieNowPlaying] = useState([]) 
-  const [movieRate, setMovieRate] = useState([])
-  const [movie, setMovie] = useState([])
-  const [tvSeries, setTVSeries] = useState([])
+  const [ movieSearch, setMovieSearch ] = useState([])
+  const [ movieNowPlaying, setMovieNowPlaying ] = useState([]) 
+  const [ movieRate, setMovieRate ] = useState([])
+  const [ movie, setMovie ] = useState([])
+  const [ tvSeries, setTVSeries ] = useState([])
 
-  /*const handleSearch = async (searchVal) => {
-    setMovieSearch([])
-    try {
-      const url = `https://api.themoviedb.org/3/search/multi?query=${searchVal}&include_adult=false&language=en-US&page=1`
-      const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`
-        }
-      }
-      const searchMovie = await fetch (url, options)
-      const data = await searchMovie.json()
-      
-      // filter out people
-      const filtered = data.results.filter(item => item.media_type !== "person")
-
-      setMovieSearch(filtered)
-    } catch (error) {
-      console.log("ERROR IN SEARCH", error)
-    }
-  }*/
-
+  // search function
   const handleSearch = async (searchVal) => {
     setMovieSearch([])
-
     if (!searchVal.trim()) return
 
     try {
@@ -55,51 +32,53 @@ function App() {
         },
       }
 
-      const movieUrl = `https://api.themoviedb.org/3/search/movie?query=${searchVal}&include_adult=false&language=en-US&page=1`
-      const tvUrl = `https://api.themoviedb.org/3/search/tv?query=${searchVal}&include_adult=false&language=en-US&page=1`
+      const MAX_PAGES = 9 // controls how many results you get
+      const requests = []
 
-      const [movieRes, tvRes] = await Promise.all([
-        fetch(movieUrl, options),
-        fetch(tvUrl, options),
-      ])
+      for (let page = 1; page <= MAX_PAGES; page++) {
+        requests.push(
+          fetch(
+            `https://api.themoviedb.org/3/search/movie?query=${searchVal}&include_adult=false&language=en-US&page=${page}`,
+            options
+          ),
+          fetch(
+            `https://api.themoviedb.org/3/search/tv?query=${searchVal}&include_adult=false&language=en-US&page=${page}`,
+            options
+          )
+        )
+      }
 
-      const movieData = await movieRes.json()
-      const tvData = await tvRes.json()
+      const responses = await Promise.all(requests)
+      const jsonResults = await Promise.all(responses.map(r => r.json()))
 
-      // Add explicit media types so your UI knows what to route to
-      const moviesWithType = movieData.results.map(item => ({
-        ...item,
-        media_type: "movie",
-      }))
-
-      const tvWithType = tvData.results.map(item => ({
-        ...item,
-        media_type: "tv",
-      }))
-
-      const combinedResults = [...moviesWithType, ...tvWithType]
+      const combinedResults = jsonResults.flatMap((data, index) =>
+        data.results.map(item => ({
+          ...item,
+          media_type: index % 2 === 0 ? "movie" : "tv",
+        }))
+      )
 
       setMovieSearch(combinedResults)
     } catch (error) {
-      console.log("ERROR IN SEARCH:", error)
+      console.error("ERROR IN SEARCH:", error)
     }
   }
 
-
+  // to fetch movies and TV shows
   useEffect(() => {
     const fetchMovie = async () => {
       const options = {
-        method: 'GET',
+        method: "GET",
         headers: {
-          accept: 'application/json',
+          accept: "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`
         }
       }
 
-      const url1 = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1'
-      const url2 = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1'
-      const url3 = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1'
-      const url4 = 'https://api.themoviedb.org/3/tv/popular?language=en-US&page=1'
+      const url1 = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1"
+      const url2 = "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1"
+      const url3 = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
+      const url4 = "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1"
 
       const [res1, res2, res3, res4] = await Promise.all([
         fetch(url1, options),

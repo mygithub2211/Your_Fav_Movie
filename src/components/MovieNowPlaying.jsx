@@ -29,7 +29,7 @@ const MovieNowPlaying = ({ title, data }) => {
   return (
     <div className="text-white p-10 mb-10">
       <h2 className="uppercase text-3xl font-bold mb-4">{title}</h2>
-      <Carousel responsive={responsive} itemClass="px-2" autoPlay={true} autoPlaySpeed={2500} infinite={true}>
+      <Carousel responsive={responsive} itemClass="px-2" autoPlay={false} autoPlaySpeed={2500} infinite={true}>
         {data.length > 0 &&
           data.map((item) => (
             /* <Link> takes user to Detail.jsx */
@@ -37,16 +37,16 @@ const MovieNowPlaying = ({ title, data }) => {
               <div key={item.id} className="aspect-[2/3] relative group w-full ">
                 <div className="group-hover:scale-105 transition-transform duration-500 ease-in-out w-full h-full cursor-pointer">
                   {/* shadow 50% of the picture */}
-                  <div className="absolute bottom-0 left-0 w-full h-[50%] bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-full h-[50%] bg-gradient-to-t from-black/80 to-transparent pointer-events-none rounded-xl" />
                   <img
                     src={`${import.meta.env.VITE_IMG_URL}${item.poster_path}`}
                     alt={item.title}
                     className="w-full h-full rounded-xl object-cover"
                   />
                   <div className="absolute bottom-2 left-0 w-full px-3">
-                    {/*<p className="font-semibold text-[14px] ">{item.title || item.original_title}</p>*}
-                    {/* Released Date + Rating (force wrapping)*/}
-                    <div className="flex items-center w-full max-[1380px]:flex-wrap">
+                    {/*<p className="font-semibold text-[14px] ">{item.title || item.original_title}</p>*/}
+                    {/* Released Date + Rating (Wrapping) */}
+                    <div className="flex items-center w-full max-[1390px]:flex-wrap">
                       {/* released date */}
                       <div className="flex items-center gap-[2px] min-w-[120px]">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-4 text-yellow-400">
@@ -71,6 +71,7 @@ const MovieNowPlaying = ({ title, data }) => {
     </div>
   )
 }
+
 /*MovieNowPlaying.propTypes = {
   title: PropTypes.string,
   data: PropTypes.array,

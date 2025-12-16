@@ -6,9 +6,9 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 
 function Header() {
-    const [openMenu, setOpenMenu] = useState(false)
-    const [openGenres, setOpenGenres] = useState(false)
-    const [openGenresDesktop, setOpenGenresDesktop] = useState(false)
+    const [ openMenu, setOpenMenu ] = useState(false)
+    const [ openGenres, setOpenGenres ] = useState(false)
+    const [ openGenresDesktop, setOpenGenresDesktop ] = useState(false)
     const genres = [
         "Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary",
         "Drama", "Family", "Fantasy", "History", "Horror", "Music", "Mystery",

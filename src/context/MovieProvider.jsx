@@ -76,8 +76,9 @@ const MovieProvider = ({ children }) => {
         </MovieContext.Provider>
     )
 }
+
 /*MovieProvider.propTypes = {
     children: PropTypes.node,
 }*/
 
-export {MovieProvider, MovieContext}
+export { MovieProvider, MovieContext }

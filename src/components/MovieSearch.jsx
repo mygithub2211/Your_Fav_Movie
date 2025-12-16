@@ -1,6 +1,6 @@
 /**
  * THIS PAGE IS USED BY SearchPage.jsx, MovieAndTV.jsx, GenrePage.jsx 
- * FOR LAYOUTS
+ * FOR RESPONSIVE LAYOUT (ROWS + COLUMNS)
  */
 // import PropTypes from "prop-types"
 import { Link } from "react-router-dom"
@@ -56,8 +56,8 @@ const EmptyStar = ({ className }) => (
   </svg>
 )
 
-const MovieSearch = ({ title, data }) => {
-  const [cols, setCols] = useState(2)
+function MovieSearch ({ title, data }) {
+  const [ cols, setCols ] = useState(2)
   
   useEffect(() => {
     const computeCols = () => {
@@ -171,6 +171,7 @@ const MovieSearch = ({ title, data }) => {
     </div>
   )
 }
+
 /*MovieSearch.propTypes = {
   title: PropTypes.string,
   data: PropTypes.array,

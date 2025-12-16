@@ -1,6 +1,8 @@
 /**
  * THIS PAGE IS USED TO SHOW MOVIES AND TV SHOWS 
  * RELATED TO A SPECIFIC GENRE
+ * PAGINATION LOCIC LIVES HERE
+ * LAYOUT + RESPONSIVE COLUMNS LIVE IN MovieSearch.jsx
  */
 import { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
@@ -18,8 +20,8 @@ const GENRE_IDS = {
 function GenrePage() {
   const { genreName } = useParams()
   const genreId = GENRE_IDS[genreName]
-  const [items, setItems] = useState([])
-  const [page, setPage] = useState(1)
+  const [ items, setItems ] = useState([])
+  const [ page, setPage ] = useState(1)
   const prevGenreIdRef = useRef(null)
   const TOTAL_PAGES = 200
 
@@ -99,7 +101,7 @@ function GenrePage() {
 
   return (
     <div className="text-white">
-      {/* call MovieSearch.jsx for layouts */}
+      {/* call MovieSearch.jsx for layout */}
       {items.length > 0 && <MovieSearch title={genreName} data={items} />}
       {/* prev and next buttons */}
       <div className="flex flex-col items-center gap-4 mt-6">

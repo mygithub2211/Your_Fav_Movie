@@ -99,9 +99,9 @@ const EmptyStar = ({ className }) => (
 function Detail({ type }) {
     const { id } = useParams()
     const isMovie = type === "movie"
-    const [movie, setMovie] = useState(null)
-    const [cast, setCast] = useState([])
-    const [similar, setSimilar] = useState([])
+    const [ movie, setMovie ] = useState(null)
+    const [ cast, setCast ] = useState([])
+    const [ similar, setSimilar ] = useState([])
     const { handleTrailer } = useContext(MovieContext)
     
     useEffect(() => {
